@@ -12,9 +12,15 @@ spring:
 
 zuul:
   routes:
-    rest=service:
+    rest-service:
       path: /api/**
       url: http://localhost:8072/
+    auth-service:
+      path: /auth/**
+      service-id: AUTH-SERVICE
+      strip-prefix: false
+      sensitive-headers: Cookie, Set-Cookie
+
 
 instance:
     hostname: localhost
